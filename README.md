@@ -2,6 +2,7 @@
 
 <MySQL>
 
+
 ## 테이블은 두 개의 테이블이 존재합니다. ##
 
 ```SQL
@@ -28,13 +29,19 @@ CREATE TABLE tutorials_channels
 );
 ```
 
-## 유저 테이블에 데이터가 추가될 때마다 채널 테이블은 유저 테이블의 채널 id를 확인합니다. ##
+
+
+## 유저 테이블의 데이터 삽입은 채널 테이블에 영향을 줍니다. ##
 
 (자동 증가 + 기본 값을 갖는 테이블에 데이터 삽입)
-INSERT INTO tutorials_channels VALUES();
-INSERT INTO tutorials_channels VALUES();
-INSERT INTO tutorials_channels VALUES();
 
+```SQL
+INSERT INTO tutorials_channels VALUES();
+INSERT INTO tutorials_channels VALUES();
+INSERT INTO tutorials_channels VALUES();
+```
+
+```SQL
 DELIMITER $$
 CREATE TRIGGER trigger_after_update_users
 AFTER INSERT ON tutorials_users
@@ -44,8 +51,10 @@ UPDATE tutorials_channels SET user_count = user_count + 1
 WHERE tutorials_channels.channel_id = NEW.channel_id;
 END $$ 
 DELIMITER ;
+```
 
 (유저 정보를 갖는 테이블에 데이터 삽입)
+```SQL
 INSERT INTO tutorials_users
 (user_name, created, channel_id, current_stage) VALUES('Lee', '2024-06-05 20:09:18', 1, 'All_Clear');
 
@@ -57,11 +66,14 @@ INSERT INTO tutorials_users
 
 INSERT INTO tutorials_users
 (user_name, created, channel_id, current_stage) VALUES('Dovahkiin', NOw(), 3, 'Stage_Three');
+```
+
 
 
 ----------
 
 
+```SQL
 +---------+-----------+---------------------+------------+---------------+-------------+
 | user_id | user_name | created             | channel_id | current_stage | description |
 +---------+-----------+---------------------+------------+---------------+-------------+
@@ -90,7 +102,7 @@ FROM tutorials_users LEFT JOIN tutorials_channels ON tutorials_users.channel_id 
 |       3 | Park      | 2024-08-08 17:17:17 | Stage_Two     |          1 |
 |       4 | Dovahkiin | 2024-09-09 21:41:51 | Stage_Three   |          1 |
 +---------+-----------+---------------------+---------------+------------+
-
+```
 
 ----------
 
