@@ -4,6 +4,7 @@
 
 ## 테이블은 두 개의 테이블이 존재합니다. ##
 
+```SQL
 CREATE TABLE tutorials_users
 (
 	user_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
@@ -16,14 +17,16 @@ CREATE TABLE tutorials_users
 	
 	CHECK(current_stage IN('All_Claer', 'Stage_One', 'Stage_Two', 'Stage_Three'))
 );
-	
+```
+
+```SQL	
 CREATE TABLE tutorials_channels
 (
 	channel_id INT UNSIGNED NOT NULL AUTO_INCREMENT,
 	user_count INT UNSIGNED DEFAULT 0,
 	PRIMARY KEY (channel_id)
 );
-
+```
 
 ## 유저 테이블에 데이터가 추가될 때마다 채널 테이블은 유저 테이블의 채널 id를 확인합니다. ##
 
