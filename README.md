@@ -1,7 +1,5 @@
 
 
-<MySQL>
-
 
 ## 테이블은 두 개의 테이블이 존재합니다. ##
 
@@ -109,8 +107,7 @@ FROM tutorials_users LEFT JOIN tutorials_channels ON tutorials_users.channel_id 
 
 예제 C++ 코드에선 쿼리를 보내고 가져오는 실습을 위해
 1) tutorials_users 테이블을 가져온 후 출력
-2) user_id가 4인 데이터에 대해 description을 수정
+2) user_id가 4인 데이터에 대해 description을 수정 
 하는 코드가 작동합니다.
 
-----------
 
